@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'features/characters/widgets/character_card.dart';
+
 void main() {
   runApp(const RickpediaApp());
 }
@@ -39,40 +41,25 @@ class CharacterScreen extends StatelessWidget {
         ),
       ),
 
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.all(16),
-        child: Card(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                Image.network(
-                  'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                const SizedBox(width: 24),
-                const Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Rick Sanchez',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 8),
-                    Text('Alive · Human'),
-                    Text('Earth (C-137)'),
-                  ],
-                ),
-              ],
-            ),
+        children: const [
+          CharacterCard(
+            name: 'Rick Sanchez',
+            status: 'Alive · Human',
+            imageUrl: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
           ),
-        ),
+          CharacterCard(
+            name: 'Morty Smith',
+            status: 'Alive · Human',
+            imageUrl: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
+          ),
+          CharacterCard(
+            name: 'Summer Smith',
+            status: 'Alive · Human',
+            imageUrl: 'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
+          ),
+        ],
       ),
     );
   }
