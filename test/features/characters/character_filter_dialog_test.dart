@@ -35,11 +35,18 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Rick'), findsOneWidget);
     await tester.enterText(find.byType(TextField).first, ' Morty ');
+    expect(find.text('Typ'), findsNothing);
+    final speciesDropdown = find.byType(DropdownButtonFormField<String>).at(1);
+    await tester.tap(speciesDropdown);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Alien').last);
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Anwenden'));
     await tester.pumpAndSettle();
     expect(result?.name, 'Morty');
     expect(result?.status, 'alive');
     expect(result?.gender, 'male');
+    expect(result?.species, 'Alien');
 
     result = null;
     await tester.tap(find.text('Open'));

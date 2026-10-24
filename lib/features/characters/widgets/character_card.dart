@@ -37,6 +37,10 @@ class CharacterCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
+                  if (character.type.isNotEmpty) ...[
+                    Text('Typ: ${character.type}'),
+                    const SizedBox(height: 8),
+                  ],
                   Text(
                     '${character.status} · ${character.species}',
                     style: const TextStyle(fontSize: 16, color: Colors.grey),

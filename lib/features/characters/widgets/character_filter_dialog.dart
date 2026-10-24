@@ -13,16 +13,13 @@ class CharacterFilterDialog extends StatefulWidget {
 
 class _CharacterFilterDialogState extends State<CharacterFilterDialog> {
   late final _name = TextEditingController(text: widget.filter.name);
-  late final _species = TextEditingController(text: widget.filter.species);
-  late final _type = TextEditingController(text: widget.filter.type);
+  late String _species = widget.filter.species;
   late String? _status = widget.filter.status;
   late String? _gender = widget.filter.gender;
 
   @override
   void dispose() {
     _name.dispose();
-    _species.dispose();
-    _type.dispose();
     super.dispose();
   }
 
@@ -53,14 +50,19 @@ class _CharacterFilterDialogState extends State<CharacterFilterDialog> {
                 onChanged: (value) => _status = value,
               ),
               const SizedBox(height: 16),
-              TextField(
-                controller: _species,
+              DropdownButtonFormField<String>(
+                initialValue: _species,
                 decoration: const InputDecoration(labelText: 'Spezies'),
-              ),
-              const SizedBox(height: 16),
-              TextField(
-                controller: _type,
-                decoration: const InputDecoration(labelText: 'Typ'),
+                items: const [
+                  DropdownMenuItem(value: '', child: Text('Alle')),
+                  DropdownMenuItem(value: 'Human', child: Text('Human')),
+                  DropdownMenuItem(value: 'Alien', child: Text('Alien')),
+                  DropdownMenuItem(value: 'Humanoid', child: Text('Humanoid')),
+                  DropdownMenuItem(value: 'Animal', child: Text('Animal')),
+                  DropdownMenuItem(value: 'Robot', child: Text('Robot')),
+                  DropdownMenuItem(value: 'unknown', child: Text('Unbekannt')),
+                ],
+                onChanged: (value) => _species = value ?? '',
               ),
               const SizedBox(height: 16),
               DropdownButtonFormField<String>(
@@ -93,8 +95,7 @@ class _CharacterFilterDialogState extends State<CharacterFilterDialog> {
             CharacterFilter(
               name: _name.text.trim(),
               status: _status,
-              species: _species.text.trim(),
-              type: _type.text.trim(),
+              species: _species,
               gender: _gender,
             ),
           ),

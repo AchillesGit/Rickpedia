@@ -16,7 +16,6 @@ void main() {
           'name': 'Rick & Morty',
           'status': 'alive',
           'species': 'Human',
-          'type': 'Rick clone',
           'gender': 'male',
         });
         return http.Response(
@@ -30,6 +29,7 @@ void main() {
                 'name': 'Rick',
                 'status': 'Alive',
                 'species': 'Human',
+                'type': 'Rick clone',
                 'image': 'https://example.com/rick.png',
               },
             ],
@@ -45,13 +45,13 @@ void main() {
             name: ' Rick & Morty ',
             status: 'alive',
             species: 'Human',
-            type: 'Rick clone',
             gender: 'male',
           ),
         ),
         () => client,
       );
       expect(page.characters.single.name, 'Rick');
+      expect(page.characters.single.type, 'Rick clone');
       expect(page.hasNextPage, isTrue);
     },
   );

@@ -3,6 +3,7 @@ class Character {
   final String name;
   final String status;
   final String species;
+  final String type;
   final String imageUrl;
 
   const Character({
@@ -10,6 +11,7 @@ class Character {
     required this.name,
     required this.status,
     required this.species,
+    required this.type,
     required this.imageUrl,
   });
 
@@ -19,6 +21,7 @@ class Character {
       name: json['name'] as String,
       status: json['status'] as String,
       species: json['species'] as String,
+      type: json['type'] as String,
       imageUrl: json['image'] as String,
     );
   }
