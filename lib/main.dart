@@ -15,6 +15,7 @@ class RickpediaApp extends StatelessWidget {
       title: 'Rickpedia',
       theme: ThemeData.dark(),
       home: const CharacterScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
