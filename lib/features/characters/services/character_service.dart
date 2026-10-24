@@ -2,10 +2,12 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../models/character.dart';
+import '../models/character_page.dart';
 
-Future<List<Character>> fetchCharacters() async {
-  final url = Uri.parse('https://rickandmortyapi.com/api/character');
+Future<CharacterPage> fetchCharacters({int page = 1}) async {
+  final url = Uri.https('rickandmortyapi.com', '/api/character', {
+    'page': '$page',
+  });
 
   final response = await http.get(url);
 
@@ -15,9 +17,5 @@ Future<List<Character>> fetchCharacters() async {
 
   final data = jsonDecode(response.body) as Map<String, dynamic>;
 
-  final results = data['results'] as List<dynamic>;
-
-  return results.map((item) {
-    return Character.fromJson(item as Map<String, dynamic>);
-  }).toList();
+  return CharacterPage.fromJson(data);
 }
