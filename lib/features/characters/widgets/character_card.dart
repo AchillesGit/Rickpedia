@@ -37,12 +37,8 @@ class CharacterCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  if (character.type.isNotEmpty) ...[
-                    Text('Typ: ${character.type}'),
-                    const SizedBox(height: 8),
-                  ],
                   Text(
-                    '${character.status} · ${character.species}',
+                    '${character.status} · ${character.species}${character.type.trim().isNotEmpty ? ' · ${character.type}' : ''}',
                     style: const TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                 ],
