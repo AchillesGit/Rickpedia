@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CharacterCard extends StatelessWidget {
-  final String name;
-  final String status;
-  final String imageUrl;
+import '../models/character.dart';
 
-  const CharacterCard({
-    super.key,
-    required this.name,
-    required this.status,
-    required this.imageUrl,
-  });
+class CharacterCard extends StatelessWidget {
+  final Character character;
+
+  const CharacterCard({super.key, required this.character});
 
   @override
   Widget build(BuildContext context) {
@@ -19,25 +14,35 @@ class CharacterCard extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            Image.network(imageUrl, width: 100, height: 100, fit: BoxFit.cover),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.network(
+                character.imageUrl,
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
             const SizedBox(width: 16),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    character.name,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  status,
-                  style: const TextStyle(fontSize: 16, color: Colors.grey),
-                ),
-              ],
+                  const SizedBox(height: 8),
+                  Text(
+                    '${character.status} · ${character.species}',
+                    style: const TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

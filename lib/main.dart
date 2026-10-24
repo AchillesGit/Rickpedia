@@ -1,6 +1,38 @@
 import 'package:flutter/material.dart';
 
 import 'features/characters/widgets/character_card.dart';
+import 'features/characters/models/character.dart';
+
+const List<Character> demoCharacters = [
+  Character(
+    id: 1,
+    name: 'Rick Sanchez',
+    status: 'Alive',
+    species: 'Human',
+    imageUrl: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+  ),
+  Character(
+    id: 2,
+    name: 'Morty Smith',
+    status: 'Alive',
+    species: 'Human',
+    imageUrl: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
+  ),
+  Character(
+    id: 3,
+    name: 'Summer Smith',
+    status: 'Alive',
+    species: 'Human',
+    imageUrl: 'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
+  ),
+  Character(
+    id: 4,
+    name: 'Beth Smith',
+    status: 'Alive',
+    species: 'Human',
+    imageUrl: 'https://rickandmortyapi.com/api/character/avatar/4.jpeg',
+  ),
+];
 
 void main() {
   runApp(const RickpediaApp());
@@ -41,25 +73,14 @@ class CharacterScreen extends StatelessWidget {
         ),
       ),
 
-      body: ListView(
+      body: ListView.builder(
         padding: const EdgeInsets.all(16),
-        children: const [
-          CharacterCard(
-            name: 'Rick Sanchez',
-            status: 'Alive · Human',
-            imageUrl: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-          ),
-          CharacterCard(
-            name: 'Morty Smith',
-            status: 'Alive · Human',
-            imageUrl: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
-          ),
-          CharacterCard(
-            name: 'Summer Smith',
-            status: 'Alive · Human',
-            imageUrl: 'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
-          ),
-        ],
+        itemCount: demoCharacters.length,
+        itemBuilder: (context, index) {
+          final character = demoCharacters[index];
+
+          return CharacterCard(character: character);
+        },
       ),
     );
   }
