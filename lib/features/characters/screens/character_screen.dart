@@ -5,6 +5,7 @@ import '../models/character_filter.dart';
 import '../services/character_service.dart';
 import '../widgets/character_card.dart';
 import '../widgets/character_filter_dialog.dart';
+import 'character_detail_screen.dart';
 
 class CharacterScreen extends StatefulWidget {
   const CharacterScreen({super.key});
@@ -131,6 +132,13 @@ class _CharacterScreenState extends State<CharacterScreen> {
                         itemBuilder: (context, index) {
                           return CharacterCard(
                             character: page.characters[index],
+                            onTap: () => Navigator.of(context).push<void>(
+                              MaterialPageRoute(
+                                builder: (_) => CharacterDetailScreen(
+                                  character: page.characters[index],
+                                ),
+                              ),
+                            ),
                           );
                         },
                       ),
