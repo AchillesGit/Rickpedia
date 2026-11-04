@@ -16,6 +16,7 @@ class CharacterCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: EdgeInsets.zero,
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
@@ -32,6 +33,8 @@ class CharacterCard extends StatelessWidget {
                   children: [
                     Text(
                       character.name,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -40,6 +43,8 @@ class CharacterCard extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       '${character.status} · ${character.species}${character.type.trim().isNotEmpty ? ' · ${character.type}' : ''}',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(fontSize: 16, color: Colors.grey),
                     ),
                   ],

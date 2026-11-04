@@ -1,3 +1,5 @@
+import 'test_network_image.dart';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -11,6 +13,7 @@ import 'package:rickpedia/features/characters/widgets/character_card.dart';
 import 'package:rickpedia/features/characters/widgets/character_image.dart';
 
 void main() {
+  setUp(() => cacheNetworkImage('https://example.com/rick.png'));
   final json = <String, dynamic>{
     'id': 1,
     'name': 'Rick Sanchez',
@@ -69,9 +72,26 @@ void main() {
     }, () => client);
   });
 
-  testWidgets('details fit narrow screens and handle missing images', (
+  testWidgets('desktop details place the image next to the information', (
     tester,
   ) async {
+    tester.view.physicalSize = const Size(1440, 900);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: CharacterDetailScreen(character: Character.fromJson(json)),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final image = tester.getRect(find.byType(CharacterImage));
+    final information = tester.getRect(find.byType(Card));
+    expect(information.left, greaterThan(image.right));
+    expect(find.text('Citadel of Ricks'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets('details fit narrow screens', (tester) async {
     tester.view.physicalSize = const Size(320, 568);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.resetPhysicalSize);
@@ -82,7 +102,8 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    expect(find.byIcon(Icons.broken_image_outlined), findsOneWidget);
+    await tester.pump(const Duration(milliseconds: 150));
+    await tester.pumpAndSettle();
     await tester.scrollUntilVisible(find.text('Episodenauftritte'), 150);
     expect(find.text('Episodenauftritte'), findsOneWidget);
     expect(tester.takeException(), isNull);
