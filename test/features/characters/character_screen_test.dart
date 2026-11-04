@@ -269,6 +269,43 @@ void main() {
     }, () => client);
   });
 
+  for (final delayed in [false, true]) {
+    testWidgets('filter resets scroll position (delayed response: $delayed)', (
+      tester,
+    ) async {
+      size(tester, 800);
+      final pending = Completer<http.Response>();
+      final client = MockClient((request) async {
+        if (request.url.queryParameters['name'] != null && delayed) {
+          return pending.future;
+        }
+        return page(1, 40);
+      });
+      addTearDown(client.close);
+      await http.runWithClient(() async {
+        await mount(tester);
+        final scroll = tester
+            .widget<CustomScrollView>(find.byType(CustomScrollView))
+            .controller!;
+        scroll.jumpTo(600);
+        await tester.pumpAndSettle();
+        await tester.enterText(find.byType(TextField), 'Rick');
+        await tester.pump(const Duration(milliseconds: 350));
+        if (delayed) {
+          await tester.pump();
+          expect(find.byType(CustomScrollView), findsNothing);
+          pending.complete(page(100, 40));
+        }
+        await tester.pumpAndSettle();
+        final updatedScroll = tester
+            .widget<CustomScrollView>(find.byType(CustomScrollView))
+            .controller!;
+        expect(updatedScroll.offset, 0);
+        expect(tester.takeException(), isNull);
+      }, () => client);
+    });
+  }
+
   testWidgets(
     'returning from details preserves results, filters and scroll offset',
     (tester) async {
