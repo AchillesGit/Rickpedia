@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../models/character.dart';
 import '../widgets/character_image.dart';
-import '../../details/widgets/episode_detail_dialog.dart';
-import '../../details/widgets/location_detail_dialog.dart';
+import '../widgets/episode_detail_dialog.dart';
+import '../widgets/location_detail_dialog.dart';
 
 class CharacterDetailScreen extends StatelessWidget {
   final Character character;

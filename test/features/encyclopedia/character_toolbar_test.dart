@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rickpedia/features/characters/models/character_filter.dart';
-import 'package:rickpedia/features/characters/widgets/character_filter_dialog.dart';
-import 'package:rickpedia/features/characters/widgets/character_toolbar.dart';
+import 'package:rickpedia/features/encyclopedia/models/character_filter.dart';
+import 'package:rickpedia/features/encyclopedia/widgets/character_filter_dialog.dart';
+import 'package:rickpedia/features/encyclopedia/widgets/character_toolbar.dart';
 
 Future<void> mount(
   WidgetTester tester,

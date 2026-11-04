@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:rickpedia/features/characters/models/character.dart';
-import 'package:rickpedia/features/characters/screens/character_detail_screen.dart';
-import 'package:rickpedia/features/characters/screens/character_screen.dart';
-import 'package:rickpedia/features/characters/widgets/character_card.dart';
-import 'package:rickpedia/features/characters/widgets/character_image.dart';
+import 'package:rickpedia/features/encyclopedia/models/character.dart';
+import 'package:rickpedia/features/encyclopedia/screens/character_detail_screen.dart';
+import 'package:rickpedia/features/encyclopedia/screens/character_screen.dart';
+import 'package:rickpedia/features/encyclopedia/widgets/character_card.dart';
+import 'package:rickpedia/features/encyclopedia/widgets/character_image.dart';
 
 void main() {
   setUp(() => cacheNetworkImage('https://example.com/rick.png'));

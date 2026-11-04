@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:rickpedia/features/characters/models/character_filter.dart';
-import 'package:rickpedia/features/characters/services/character_service.dart';
+import 'package:rickpedia/features/encyclopedia/models/character_filter.dart';
+import 'package:rickpedia/features/encyclopedia/services/character_service.dart';
 
 void main() {
   test(

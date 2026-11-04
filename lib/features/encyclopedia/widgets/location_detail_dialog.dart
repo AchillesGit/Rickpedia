@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../characters/models/character.dart';
+import '../models/character.dart';
 import '../models/location.dart';
 import '../services/detail_service.dart';
 import 'detail_character_list.dart';

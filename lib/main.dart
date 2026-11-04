@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'features/characters/screens/character_screen.dart';
+import 'features/encyclopedia/screens/character_screen.dart';
 
 void main() {
   runApp(const RickpediaApp());

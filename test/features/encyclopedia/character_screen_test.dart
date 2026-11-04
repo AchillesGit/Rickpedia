@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:rickpedia/features/characters/screens/character_screen.dart';
-import 'package:rickpedia/features/characters/widgets/character_card.dart';
+import 'package:rickpedia/features/encyclopedia/screens/character_screen.dart';
+import 'package:rickpedia/features/encyclopedia/widgets/character_card.dart';
 
 http.Response page(int start, int count, {bool next = false}) => http.Response(
   jsonEncode({

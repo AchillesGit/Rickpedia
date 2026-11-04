@@ -4,10 +4,10 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:rickpedia/features/characters/models/character.dart';
-import 'package:rickpedia/features/details/models/episode.dart';
-import 'package:rickpedia/features/details/models/location.dart';
-import 'package:rickpedia/features/details/services/detail_service.dart';
+import 'package:rickpedia/features/encyclopedia/models/character.dart';
+import 'package:rickpedia/features/encyclopedia/models/episode.dart';
+import 'package:rickpedia/features/encyclopedia/models/location.dart';
+import 'package:rickpedia/features/encyclopedia/services/detail_service.dart';
 
 void main() {
   test('models retain links and tolerate absent optional fields', () {

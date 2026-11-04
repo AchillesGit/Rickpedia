@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rickpedia/features/characters/controllers/character_controller.dart';
-import 'package:rickpedia/features/characters/models/character.dart';
-import 'package:rickpedia/features/characters/models/character_filter.dart';
-import 'package:rickpedia/features/characters/models/character_page.dart';
+import 'package:rickpedia/features/encyclopedia/controllers/character_controller.dart';
+import 'package:rickpedia/features/encyclopedia/models/character.dart';
+import 'package:rickpedia/features/encyclopedia/models/character_filter.dart';
+import 'package:rickpedia/features/encyclopedia/models/character_page.dart';
 
 CharacterPage page(int id, {bool next = false}) => CharacterPage(
   characters: [

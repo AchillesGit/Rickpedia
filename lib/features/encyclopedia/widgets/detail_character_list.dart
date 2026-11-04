@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../characters/models/character.dart';
-import '../../characters/widgets/character_image.dart';
+import '../models/character.dart';
+import 'character_image.dart';
 import '../services/detail_service.dart';
 import 'detail_fields.dart';
 import 'resource_list.dart';

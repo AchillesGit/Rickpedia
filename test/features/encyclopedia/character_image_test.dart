@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rickpedia/features/characters/widgets/character_image.dart';
-import 'package:rickpedia/features/characters/widgets/character_skeleton.dart';
+import 'package:rickpedia/features/encyclopedia/widgets/character_image.dart';
+import 'package:rickpedia/features/encyclopedia/widgets/character_skeleton.dart';
 
 import 'test_network_image.dart';
 

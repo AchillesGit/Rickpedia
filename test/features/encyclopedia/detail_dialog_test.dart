@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:rickpedia/features/characters/models/character.dart';
-import 'package:rickpedia/features/characters/screens/character_detail_screen.dart';
-import 'package:rickpedia/features/details/widgets/detail_dialog.dart';
-import 'package:rickpedia/features/details/widgets/episode_detail_dialog.dart';
-import 'package:rickpedia/features/details/widgets/location_detail_dialog.dart';
+import 'package:rickpedia/features/encyclopedia/models/character.dart';
+import 'package:rickpedia/features/encyclopedia/screens/character_detail_screen.dart';
+import 'package:rickpedia/features/encyclopedia/widgets/detail_dialog.dart';
+import 'package:rickpedia/features/encyclopedia/widgets/episode_detail_dialog.dart';
+import 'package:rickpedia/features/encyclopedia/widgets/location_detail_dialog.dart';
 
-import '../characters/test_network_image.dart';
+import 'test_network_image.dart';
 
 const _base = 'https://rickandmortyapi.com/api';
 const _image = 'https://example.com/rick.png';
