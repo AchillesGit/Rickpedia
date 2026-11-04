@@ -22,8 +22,14 @@ void main() {
     'type': '',
     'image': 'https://example.com/rick.png',
     'gender': 'Male',
-    'origin': {'name': 'Earth (C-137)'},
-    'location': {'name': 'Citadel of Ricks'},
+    'origin': {
+      'name': 'Earth (C-137)',
+      'url': 'https://rickandmortyapi.com/api/location/1',
+    },
+    'location': {
+      'name': 'Citadel of Ricks',
+      'url': 'https://rickandmortyapi.com/api/location/3',
+    },
     'episode': ['episode/1', 'episode/2'],
   };
 

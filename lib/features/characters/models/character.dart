@@ -9,6 +9,9 @@ class Character {
   final String origin;
   final String location;
   final int episodeCount;
+  final String originUrl;
+  final String locationUrl;
+  final List<String> episodeUrls;
 
   const Character({
     required this.id,
@@ -21,6 +24,9 @@ class Character {
     this.origin = 'unknown',
     this.location = 'unknown',
     this.episodeCount = 0,
+    this.originUrl = '',
+    this.locationUrl = '',
+    this.episodeUrls = const [],
   });
 
   factory Character.fromJson(Map<String, dynamic> json) {
@@ -39,6 +45,12 @@ class Character {
           (json['location'] as Map<String, dynamic>?)?['name'] as String? ??
           'unknown',
       episodeCount: (json['episode'] as List<dynamic>?)?.length ?? 0,
+      originUrl:
+          (json['origin'] as Map<String, dynamic>?)?['url'] as String? ?? '',
+      locationUrl:
+          (json['location'] as Map<String, dynamic>?)?['url'] as String? ?? '',
+      episodeUrls:
+          (json['episode'] as List<dynamic>?)?.cast<String>() ?? const [],
     );
   }
 }
